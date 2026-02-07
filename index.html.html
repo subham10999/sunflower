@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Sunflower Day, Prachi 🌻</title>
+    <style>
+        :root {
+            --sun-yellow: #FFD700;
+            --warm-orange: #FFA500;
+            --leaf-green: #728C00;
+            --soft-cream: #FFFDE7;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--soft-cream) 0%, #fff9c4 100%);
+            color: #5d4037;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        /* Floating Sunflowers Background */
+        .bg-sunflowers {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .floating-flower {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 10s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(110vh) rotate(0deg); }
+            100% { transform: translateY(-10vh) rotate(360deg); }
+        }
+
+        header {
+            padding: 50px 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #f57f17;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: sway 3s ease-in-out infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+
+        /* Audio Control */
+        .music-player {
+            margin-bottom: 30px;
+            background: white;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Card Grid */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            height: 350px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-radius: 20px;
+        }
+
+        .card.is-flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 5px solid var(--sun-yellow);
+        }
+
+        .card-front {
+            background-color: white;
+            background-image: radial-gradient(#fff9c4 10%, transparent 10%);
+            background-size: 20px 20px;
+        }
+
+        .card-back {
+            background-color: #fffde7;
+            transform: rotateY(180deg);
+            color: #333;
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .sunflower-icon {
+            font-size: 80px;
+            margin-bottom: 15px;
+            animation: grow 2s ease-in-out infinite;
+        }
+
+        @keyframes grow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .click-text {
+            color: var(--leaf-green);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Special Message Section */
+        .special-message {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 30px;
+            border-left: 10px solid var(--sun-yellow);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            font-size: 1.3rem;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .special-message::after {
+            content: '🌻';
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            font-size: 3rem;
+        }
+
+        /* Final Footer */
+        .footer {
+            padding: 100px 20px;
+            background: var(--sun-yellow);
+            color: #5d4037;
+            margin-top: 50px;
+        }
+
+        .big-sunflower {
+            font-size: 120px;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .mission-text {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        /* Hover Effects */
+        .card:hover .card-inner {
+            box-shadow: 0 15px 30px rgba(245, 127, 23, 0.3);
+        }
+
+        button {
+            background: var(--sun-yellow);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background: var(--warm-orange);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-sunflowers" id="flowerBg"></div>
+
+    <header>
+        <h1>Happy Sunflower Day, Prachi 🌻</h1>
+        <div class="music-player">
+            <span> aree yaha Click karo backgound music ke  🎵</span><br><br>
+            <audio id="bgMusic" loop>
+                <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <button onclick="toggleMusic()">Play/Pause Music</button>
+        </div>
+    </header>
+
+    <div class="card-container" id="cardGrid">
+        </div>
+
+    <div class="special-message">
+        <p>
+           HA BABA I  know, <strong>Prachi</strong>… today is Rose Day. But I thought, why not do something different? 
+            Roses ARE common but you are not kyu ki tum mangal se aayi ho i KNOW very well aur tum ak phool deserve nahi krti ho 
+            pura garden karti ho 😄🌻 par fool ko phool rte hai 😄🌻.you know Roses fade, but sunflowers always turn toward the sun.
+            That’s the sunflower theory say And in the same way, I turn toward you
+            —not to demand attention, but becaus just to see you from a distance makes me 
+            feels pure, warm, and for now its imposiible for me to explain That’s why I’m celebrating Sunflower Day
+            
+            with my <strong>Sakhi ji</strong> 😄🌻.
+        </p>
+    </div>
+
+    <div class="footer">
+        <span class="big-sunflower">🌻</span>
+        <div class="mission-text">Prachi 🌻, if you’re smiling right now… mission accomplished. 😄✨</div>
+    </div>
+
+    <script>
+        const quotes = [
+            "“You know PRACHI U  don’t try to be special… and that’s exactly what makes you special.IN MY EYES ” 🌻",
+            "“ I DONT KNOW HOW BUT You have a way of making ordinary moments feel lighter—without even trying.”",
+            "“YOU KNOW If the world had more people like you, Mondays would feel like Saturdays.”.” 🤍",
+            "“This page exists because you somehow make things better… and because I wanted to see you smile 🤣.”",
+            "“Warning: This website may cause unnecessary smiling.” 😁.” 😄🌻",
+            "““You’re like a sunflower in a room full of lamps—bright, unavoidable, and making everyone feel warm.” 🌻 🤣🙌.”",
+            "“ you know Sunflowers don’t chase the sun—they just turn towards the sun from a distance. AND In the same way, ME ALSO I don’t demand attention… I just turn toward you quietly,from a distance because your presence feels warm.” 🤞🌻✨",
+            "“YOU PRACHI This isn’t about always standing in sunshine. It’s about choosing the same direction, even when days feel cloudy.”",
+            "“AUR HA JYADA ZOR NA DO APNE GHUTNO PAR ..THERE IS Nothing more than A  HEART FULL OF respect AND CARE …FOR U  and true friendship.”"
+        ];
+
+        const cardGrid = document.getElementById('cardGrid');
+
+        // Generate Cards
+        quotes.forEach((quote, index) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.onclick = () => card.classList.toggle('is-flipped');
+
+            card.innerHTML = `
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="sunflower-icon">🌻</div>
+                        <p class="click-text">Kitu jii click here 🌻</p>
+                    </div>
+                    <div class="card-back">
+                        <p>${quote}</p>
+                    </div>
+                </div>
+            `;
+            cardGrid.appendChild(card);
+        });
+
+        // Background Animation
+        const bg = document.getElementById('flowerBg');
+        for (let i = 0; i < 15; i++) {
+            const flower = document.createElement('div');
+            flower.className = 'floating-flower';
+            flower.innerText = '🌻';
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDelay = Math.random() * 10 + 's';
+            flower.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            bg.appendChild(flower);
+        }
+
+        // Music Toggle
+        const music = document.getElementById('bgMusic');
+        function toggleMusic() {
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+    </script>
+</body>
+</html>
